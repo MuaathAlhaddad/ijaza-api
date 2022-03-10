@@ -1,0 +1,18 @@
+created:
+    - database/factories/MujazFactory.php
+    - database/factories/AdminFactory.php
+    - database/factories/IjazaFactory.php
+    - database/factories/CountryFactory.php
+    - database/migrations/2022_03_08_151749_create_mujazs_table.php
+    - database/migrations/2022_03_08_151750_create_admins_table.php
+    - database/migrations/2022_03_08_151751_create_ijazas_table.php
+    - database/migrations/2022_03_08_151752_create_countries_table.php
+    - app/Models/Mujaz.php
+    - app/Models/Admin.php
+    - app/Models/Ijaza.php
+    - app/Models/Country.php
+models:
+    Mujaz: { first_name: string, last_name: string, nickname: 'string nullable', generation: 'string nullable', sex: char, birth_date: 'date nullable', death_date: 'date nullable', country_id: 'id:country nullable', notes: 'longText nullable', biography: 'longText nullable', admin_id: 'id:admin', mujeez_id: 'id:user' }
+    Admin: { name: text }
+    Ijaza: { mujaz_id: 'id:user', mujeez_id: 'id:user', document: 'string nullable', location: 'longText nullable' }
+    Country: { code: string, name: string, phonecode: integer }
