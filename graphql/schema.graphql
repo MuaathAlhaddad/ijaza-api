@@ -1,16 +1,23 @@
-"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
 scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
-"Indicates what fields are available at the top level of a query operation."
+type Mutation {
+    "Log in to a new session and get the user."
+    login(email: String!, password: String! ): User
+
+    "Log out from the current session, showing the user one last time."
+    logout: User @guard
+}
+
 type Query {
     mujazs(orderBy: _ @orderBy(columnsEnum: "MujazColumns")): [Mujaz!]!
     @paginate(type: PAGINATOR, defaultCount: 10)
 
     mujaz(id: ID @eq): Mujaz @find
 
+    users: [User!]!
+    @paginate(type: PAGINATOR, defaultCount: 10)
 
-    "List multiple users."
-    mujazs: [Mujaz!]! @paginate(defaultCount: 10)
+    me: User @auth
 }
 
 enum MujazColumns {
@@ -24,6 +31,15 @@ enum MujazColumns {
     death_date
     notes
     biography
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    password: String!
+    created_at: DateTime!
+    updated_at: DateTime!
 }
 
 type Mujaz {

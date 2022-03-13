@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             MujazSeeder::class,
             IjazaSeeder::class,
+            UserSeeder::class
         ] );
     }
 }
