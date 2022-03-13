@@ -10,7 +10,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel-shift/blueprint": "^2.0",
         "laravel/framework": "^8.75",
-        "laravel/sanctum": "^2.11",
+        "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.5",
         "mll-lab/laravel-graphql-playground": "^2.6",
         "nuwave/lighthouse": "^5.42",

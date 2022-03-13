@@ -11,10 +11,11 @@ class Login
     /**
      * @param null $_
      * @param array<string, mixed> $args
+     * @throws Error
      */
     public function __invoke( $_, array $args )
     {
-        $guard = Auth::guard( 'web' );
+        $guard = Auth::guard( config( 'sanctum.guard', 'web' ) );
 
         $credentials = Arr::only( $args, [ 'email', 'password' ] );
 
@@ -27,6 +28,6 @@ class Login
 
         $token = $user->createToken( 'api_token' )->plainTextToken;
 
-        return $token;
+        return "api_token $token";
     }
 }
